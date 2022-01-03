@@ -28,6 +28,7 @@ namespace Garaget
             Console.WriteLine("1. Park some dummy wehicles");
             Console.WriteLine("2. Show all parked vehicles");
             Console.WriteLine("3. Remove vehicles");
+            Console.WriteLine("4. Print garage stats");
                 Console.WriteLine("Q. Exit");
 
                 var input = Console.ReadLine();
@@ -39,13 +40,18 @@ namespace Garaget
                         break;   
                 case "2":
                         ShowAllVehicles();
+                        Console.ReadLine();
                         break;
                 case "3":
                         Console.WriteLine("Input regnr of tvehicle you want to unpoark:");
                         var regnr = Console.ReadLine();
                         handler.RemoveVehicle(regnr);
                         break;
-                    case "Q":
+                case "4":
+                        handler.PrintStats();
+                        Console.ReadLine();
+                        break;
+                case "Q":
                     Environment.Exit(0);    
                     break;
                 default:
@@ -63,7 +69,7 @@ namespace Garaget
             foreach (var vehicle in vehicles)
             {
                 Console.WriteLine(vehicle);
-                Console.ReadLine();
+                
             }
         }
 

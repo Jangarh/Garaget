@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Garaget
 {
-    public class Vehicle : IVehicle
+    public abstract class Vehicle : IVehicle
     {
 
-        public string regNo = "ABC111";
-        public string make = "BMW";
-        public string model = "X5";
-        public string color = "Gray";
+        private string regNo;
+        private string make;
+        private string model;
+        private string color;
         public string? RegNo { get { return regNo; } set { regNo = value; } }
         public string Make { get { return make; } set { make = value; } }
         public string Model { get { return model; } set { model = value; } }
@@ -27,10 +27,10 @@ namespace Garaget
             Color = color;
         }
 
-        public Vehicle()
-        {
+        //public Vehicle()
+        //{
 
-        }
+        //}
         public override string ToString()
         {
             return string.Format("Vehicle with Reg Number {0} and of model {1}", RegNo, Model);

@@ -19,10 +19,12 @@ namespace Garaget
         {
             var vehicles = new List<Vehicle>()
                 {
-                    new Vehicle {regNo="ABC121", make="Toyota", model="Corola", color="Green" },
-                    new Vehicle {regNo="BSC654", make="BMW", model="X6", color="Blue" },
-                    new Vehicle {regNo="eee333", make="Volvo", model="S60", color="Red" },
-                    new Vehicle {regNo="bbb222", make="Honda", model="vvv", color="Gray" }
+                    new Car("CAR111", "Toyota", "Corola", "Green", "Petrol"),
+                    new Airplane("AIR111", "SAAB", "100", "WHite", "Double"),
+                    new Airplane("AIR222", "SAAB", "100", "WHite", "Double"),
+                    new Bus("BUS111","MAN", "100", "Red", 40),
+                    new Boat("BOA111", "Volvo", "100", "White", 100),
+                    new Boat("BOA222", "Volvo", "100", "White", 100),
                 };
 
             foreach (var vehicle in vehicles)
@@ -54,6 +56,55 @@ namespace Garaget
             }
                     
         }
+
+        public void FindByRegNr(string regnr)
+        {
+            foreach (var vehicle in garage)
+            {
+                if (vehicle.RegNo == regnr)
+                {
+                    Console.WriteLine($"Found vehicle: {vehicle.ToString()}");
+                }
+                
+            }
+        }
+
+        public void PrintStats()
+        {
+            var nrofCars = 0;
+            var nrofBuses = 0;
+            var nrofBoats = 0;
+            var nrofAirplanes = 0;
+
+            foreach (var vehicle in garage)
+            {
+                if (vehicle.GetType().Name == "Car")
+                {
+                    nrofCars++;
+                }
+                if (vehicle.GetType().Name == "Bus")
+                {
+                    nrofBuses++;
+                }
+                if (vehicle.GetType().Name == "Boat")
+                {
+                    nrofBoats++;
+                }
+                if (vehicle.GetType().Name == "Airplane")
+                {
+                    nrofAirplanes++;
+                }
+            }
+
+            Console.WriteLine("Statistics for this garage:");
+            Console.WriteLine($"Cars: {nrofCars}");
+            Console.WriteLine($"Airplanes: {nrofAirplanes}");
+            Console.WriteLine($"Boats: {nrofBoats}");
+            Console.WriteLine($"Buses: {nrofBuses}");
+
+        }
+
+
         
     }
 }
